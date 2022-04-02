@@ -1,12 +1,48 @@
 let fetchButton = document.querySelector("#fetch")
 
 let data = []
+let ingredients = []
 
 const fetchAPI = async() => {
-    let res = await fetch('https://api.spoonacular.com/recipes/findByIngredients?ingredients=pork,+egg,+vegetables,+cloves&number=10&apiKey=010f07cc7be4416ea7006d8355335fcd')
+    let url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=' 
+    let key = '&number=10&apiKey=010f07cc7be4416ea7006d8355335fcd'
+    let items = ""
+    for(let i = 0; i < ingredients.length; i++) {
+        if(ingredients.length>1 &&i == 0){
+            items = items+ingredients[i].toLowerCase()+","
+        } else {
+            items = items+"+"+ingredients[i].toLowerCase()+","
+        } 
+    }
+    items = items.slice(0, items.length-1)
+    let finalURL = url + items + key
+    let res = await fetch(finalURL)
     data = await res.json()
     console.log(data)
     createResultCards()
+}
+
+let selectedItems = document.querySelectorAll('#clicked')
+
+function arrayRemove(arr, value) { 
+    return arr.filter(function(ele){ 
+        return ele != value; 
+    });
+}
+
+const selected = (s) => {
+    if(ingredients.includes(s.innerText)){
+        ingredients = arrayRemove(ingredients, s.innerText)
+        s.classList.remove('selected')
+    } else {
+        s.classList.add('selected')
+        ingredients.push(s.innerText)
+    }
+    console.log(ingredients)
+}
+
+for(let s of selectedItems){
+    s.addEventListener("click", ()=> selected(s))     
 }
 
 fetchButton.addEventListener("click", ()=>fetchAPI())

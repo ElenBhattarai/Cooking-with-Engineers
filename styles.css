@@ -3,6 +3,7 @@
     padding: 0px;
 }
 
+
 #title {
     box-shadow: 2px 2px 10px black;
 }
@@ -13,12 +14,18 @@
     box-shadow: 2px 2px 10px black;
 }
 
+
 .float-container {
+    display: flex;
     padding: 20px;
 }
 
+.selected {
+    background-color: green;
+    color:white;
+}
 .float-child {
-    float: left;
+    display:inline-block;
     padding: 20px;
     height: 30%;
     background-color: white;
@@ -35,8 +42,6 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: grey;
-    /* background-image: url('kitchen.png'); */
 }
 
 p {
