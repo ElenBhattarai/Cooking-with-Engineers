@@ -3,6 +3,22 @@ let fetchButton = document.querySelector("#fetch")
 let data = []
 let ingredients = []
 
+function insertionSort(arr)
+{
+    let i, key, j;
+    for (i = 1; i < arr.length; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j].missedIngredientCount > key.missedIngredientCount)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
 const fetchAPI = async() => {
     let url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=' 
     let key = '&number=10&apiKey=010f07cc7be4416ea7006d8355335fcd'
@@ -19,6 +35,7 @@ const fetchAPI = async() => {
     let res = await fetch(finalURL)
     data = await res.json()
     console.log(data)
+    insertionSort(data)
     createResultCards()
 }
 
@@ -103,4 +120,6 @@ const createResultCards = () => {
         recipe.innerText = "View Recipe>>"
         desc.appendChild(recipe)
     }
+
+
 }
