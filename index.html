@@ -11,15 +11,19 @@
     <title>Cooking with Engineers</title>
 </head>
 <body>
+    <!-- setting up a div for the Welcome div on the homepage -->
     <div class="container p-4 my-5 bg-primary text-white" id="title">
+        <!-- set the Heading -->
         <h2 class="text-center">Welcome to cooking with Engineers!</h2>
         <p class="text-center">A 448 Project by <abbr title="Elen Bhattarai, Javante Ewing, Alex Manley, Joaquin Vargas, and Max Dick">Group 7</abbr>.</p>
     </div>
-    
+    <!-- make a div to wrap all the items selections -->
     <div class="float-container">   
+        <!-- div for selecting ingredients -->
         <div class="float-child" id="section1">
             <h2>Add your Ingredients</h2>
             <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#meats">Meats </button>
+                <!-- div for buttons for all the meat stuff -->
                 <div id="meats" class="collapse">
                     <button type="button" id = "clicked" class="btn btn-outline-success">Chicken</button>
                     <button type="button" id = "clicked" class="btn btn-outline-success">Beef</button>
@@ -27,6 +31,7 @@
                     <button type="button" id = "clicked" class="btn btn-outline-success">Fish</button>
                 </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#veg">Vegetables </button>
+                <!-- div for buttons for all the veg stuff -->
                 <div id="veg" class="collapse">
                     <button type="button" id = "clicked" class="btn btn-outline-success">Lettuce</button>
                     <button type="button" id = "clicked" class="btn btn-outline-success">Carrots</button>
@@ -35,6 +40,7 @@
                     <button type="button" id = "clicked" class="btn btn-outline-success">Corn</button>
                 </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#spice">Spices </button>
+                <!-- div for buttons for all the spices -->
                 <div id="spice" class="collapse">
                     <button type="button" id = "clicked" class="btn btn-outline-success">Salt</button>
                     <button type="button" id = "clicked" class="btn btn-outline-success">Pepper</button>
@@ -43,6 +49,7 @@
                     <button type="button" id = "clicked" class="btn btn-outline-success">Lemon-Pepper</button>
                 </div>
         </div>
+        <!-- making another div for all the filters we will have -->
         <div class="float-child" id="section1">
             <h2>Filters</h2>
                 <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#allergies">Allergies </button>
@@ -52,6 +59,7 @@
                         <button type="button" class="btn btn-outline-success">Eggs</button>
                     </div>
         </div>
+        <!-- Button to search for the recipes -->
         <button type="button" class="btn btn-danger btn-block" id="fetch">Search </button>
     </div>
 
