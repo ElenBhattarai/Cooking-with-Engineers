@@ -8,7 +8,22 @@ let data = []
 //Setting up an array to put in all the ingredients that the user has selected
 let ingredients = []
 
-//Function to fetch the API Server and get the response from it
+function insertionSort(arr)
+{
+    let i, key, j;
+    for (i = 1; i < arr.length; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j].missedIngredientCount > key.missedIngredientCount)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
 const fetchAPI = async() => {
     //first part of the URL
     let url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=' 
@@ -35,7 +50,7 @@ const fetchAPI = async() => {
     let res = await fetch(finalURL)
     //turn the response to json
     data = await res.json()
-    //create cards for all the responses that we got
+    insertionSort(data)
     createResultCards()
 }
 
@@ -153,4 +168,6 @@ const createResultCards = () => {
         recipe.innerText = "View Recipe>>"
         desc.appendChild(recipe)
     }
+
+
 }
